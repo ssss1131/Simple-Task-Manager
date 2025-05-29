@@ -60,6 +60,6 @@ public class JwtService {
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String userName = extractUserName(token);
         Date date = extractClaim(token, Claims::getExpiration);
-        return (userName.equals(userDetails.getUsername())) && date.before(new Date());
+        return (userName.equals(userDetails.getUsername())) && date.after(new Date());
     }
 }
