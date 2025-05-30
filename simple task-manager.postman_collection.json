@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "c5b399f8-7cc2-4edc-8d87-231a3c03247b",
+		"name": "simple task-manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37054640"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register first account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Saulet\",\r\n    \"password\": \"SUUUUU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login first account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Saulet\",\r\n    \"password\": \"SUUUUU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "register second account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Darmen\",\r\n    \"password\": \"SUUUUU\"\r\n}"
+						},
+						"url": "http://localhost:8080/api/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login second account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Darmen\",\r\n    \"password\": \"SUUUUU\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/auth/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "list tasks",
+					"item": [
+						{
+							"name": "list all tasks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/api/tasks"
+							},
+							"response": []
+						},
+						{
+							"name": "list TODO tasks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tasks?status=TODO",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "TODO"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list In Progress tasks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tasks?status=IN_PROGRESS",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "IN_PROGRESS"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list done tasks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tasks?status=DONE",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tasks"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "DONE"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get by id",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Buy groceries\",\r\n  \"description\": \"Milk, Bread, Eggs\",\r\n  \"status\": \"TODO\"\r\n}\r\n"
+								},
+								"url": "http://localhost:8080/api/tasks/1"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "modify tasks",
+					"item": [
+						{
+							"name": "create task",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Buy asd\",\r\n  \"description\": \"Milk, Bread, Eggs\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/tasks"
+							},
+							"response": []
+						},
+						{
+							"name": "update task",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"Buy asd\",\r\n  \"description\": \"Milk, Bread, Eggs\",\r\n  \"status\": \"DONE\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/api/tasks/2"
+							},
+							"response": []
+						},
+						{
+							"name": "delete task",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8080/api/tasks/1"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwic3ViIjoiU2F1bGV0IiwiaWF0IjoxNzQ4NTkxODI5LCJleHAiOjE3NDg2MDYyMjl9.ha7IgYbc6MKv7FLAJTKR5Y37y3c1gRR1YNoEcohw6RnQCZxAxrMnU7AAJTDETZeZ"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
