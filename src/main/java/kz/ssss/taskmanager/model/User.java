@@ -1,10 +1,12 @@
 package kz.ssss.taskmanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "tasks")
 public class User implements UserDetails {
 
     @Id
@@ -26,6 +28,10 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
 
     @Builder
     public User(String username, String password) {

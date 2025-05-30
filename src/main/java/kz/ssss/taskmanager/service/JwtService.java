@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import kz.ssss.taskmanager.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@Slf4j
 public class JwtService {
 
     @Value("${token.jwt.key}")
@@ -33,7 +35,7 @@ public class JwtService {
     private String generateToken(Map<String, Object> claims, UserDetails user) {
         return Jwts.builder().claims(claims).subject(user.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)) //30min
+                .expiration(new Date(System.currentTimeMillis() + 10000 * 60 * 24)) //300min
                 .signWith(getSigningKey()).compact();
     }
 
