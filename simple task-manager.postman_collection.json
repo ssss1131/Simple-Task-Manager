@@ -173,8 +173,11 @@
 						},
 						{
 							"name": "get by id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [],
 								"body": {
 									"mode": "raw",
@@ -214,14 +217,14 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"title\": \"Buy asd\",\r\n  \"description\": \"Milk, Bread, Eggs\",\r\n  \"status\": \"DONE\"\r\n}\r\n",
+									"raw": "{\r\n  \"title\": \"Buy groceries\",\r\n  \"description\": \"Milk, Bread, Eggs\",\r\n  \"status\": \"DONE\"\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "http://localhost:8080/api/tasks/2"
+								"url": "http://localhost:8080/api/tasks/1"
 							},
 							"response": []
 						},
